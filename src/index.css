@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #FAF7F2;
+  color: #1A1A2E;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.pt-word { font-family: 'Courier New', Courier, monospace; color: #1A1A2E; }
+
+/* Card */
+.card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  padding: 20px;
+}
+
+/* Pill button */
+.btn-primary {
+  background: #7B61FF;
+  color: white;
+  border-radius: 999px;
+  height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-black {
+  background: #1A1A2E;
+  color: white;
+  border-radius: 999px;
+  height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+}
+.btn-black:hover { opacity: 0.85; }
+
+.btn-outline {
+  background: white;
+  color: #7B61FF;
+  border: 2px solid #7B61FF;
+  border-radius: 999px;
+  height: 48px;
+  padding: 0 24px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+}
+.btn-outline:hover { opacity: 0.9; }
+
+/* Tag/badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-purple { background: #EDE9FF; color: #7B61FF; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-yellow { background: #FFFBEB; color: #D97706; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-green { background: #DCFCE7; color: #16A34A; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-red { background: #FEE2E2; color: #DC2626; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-gray { background: #F3F4F6; color: #6B7280; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-blue { background: #EDE9FF; color: #7B61FF; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+.badge-amber { background: #FFFBEB; color: #D97706; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; }
+
+/* Section header */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  margin-bottom: 12px;
+}
+
+/* Tab pills */
+.tab-active {
+  background: #7B61FF;
+  color: white;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-inactive {
+  background: white;
+  color: #6B7280;
+  border: 1.5px solid #EBEBF0;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Scrollbar hiding */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FAF7F2; }
+::-webkit-scrollbar-thumb { background: #EBEBF0; border-radius: 3px; }

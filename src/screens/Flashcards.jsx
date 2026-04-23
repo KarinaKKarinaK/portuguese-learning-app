@@ -3,6 +3,7 @@ import { useFlashcards } from '../hooks/useFlashcards';
 import { useXP } from '../hooks/useXP';
 import { getLastSyncInfo, syncFromNotion } from '../utils/notion';
 import FlashCard from '../components/FlashCard';
+import { CheckCircle2, Trophy, ThumbsUp, Zap } from 'lucide-react';
 
 export default function Flashcards() {
   const { getDueCards, rateCard, getCardCount } = useFlashcards();
@@ -136,7 +137,9 @@ export default function Flashcards() {
               border: '1.5px solid #BBF7D0',
             }}
           >
-            <div style={{ fontSize: '40px', marginBottom: '10px' }}>🎉</div>
+            <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+              <CheckCircle2 size={48} strokeWidth={1.5} style={{ color: '#16A34A' }} />
+            </div>
             <div style={{ color: '#16A34A', fontWeight: 700, fontSize: '17px', marginBottom: '6px' }}>
               All caught up!
             </div>
@@ -160,8 +163,13 @@ export default function Flashcards() {
     const pct = total > 0 ? Math.round((sessionStats.correct / total) * 100) : 0;
     return (
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
-        <div style={{ fontSize: '60px', marginBottom: '8px' }}>
-          {pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪'}
+        <div style={{ marginBottom: '8px', display: 'flex', justifyContent: 'center' }}>
+          {pct >= 80
+            ? <Trophy size={56} strokeWidth={1.5} style={{ color: '#D97706' }} />
+            : pct >= 60
+            ? <ThumbsUp size={56} strokeWidth={1.5} style={{ color: '#7B61FF' }} />
+            : <Zap size={56} strokeWidth={1.5} style={{ color: '#22C55E' }} />
+          }
         </div>
         <h2 style={{ color: '#1A1A2E', fontSize: '24px', fontWeight: 800 }}>
           Session Complete!

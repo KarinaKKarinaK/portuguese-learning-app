@@ -4,6 +4,7 @@ import StreakBar from '../components/StreakBar';
 import XPBar from '../components/XPBar';
 import WeeklyHeatmap from '../components/WeeklyHeatmap';
 import SpeakButton from '../components/SpeakButton';
+import { BookOpen, PenLine, Mic, CreditCard, MessageSquare, HelpCircle, Flame } from 'lucide-react';
 
 const DAILY_EXPRESSIONS = [
   { pt: 'Uai, que trem bao!', en: 'Wow, what a great thing!', notes: 'Classic Mineiro exclamation' },
@@ -39,12 +40,12 @@ const DAILY_EXPRESSIONS = [
 ];
 
 const QUICK_TILES = [
-  { to: '/grammar', icon: '📖', label: 'Grammar', desc: 'Verb tenses & conjugations' },
-  { to: '/vocabulary', icon: '📝', label: 'Vocabulary', desc: '210 words with examples' },
-  { to: '/mineires', icon: '🗣️', label: 'Mineirês', desc: 'Slang, pronunciation & more' },
-  { to: '/flashcards', icon: '🃏', label: 'Flashcards', desc: 'Spaced repetition review' },
-  { to: '/content', icon: '💬', label: 'Content', desc: 'Dialogues & reading texts' },
-  { to: '/quiz', icon: '❓', label: 'Quiz', desc: 'Test your knowledge' },
+  { to: '/grammar', Icon: BookOpen, label: 'Grammar', desc: 'Verb tenses & conjugations' },
+  { to: '/vocabulary', Icon: PenLine, label: 'Vocabulary', desc: '210 words with examples' },
+  { to: '/mineires', Icon: Mic, label: 'Mineirês', desc: 'Slang, pronunciation & more' },
+  { to: '/flashcards', Icon: CreditCard, label: 'Flashcards', desc: 'Spaced repetition review' },
+  { to: '/content', Icon: MessageSquare, label: 'Content', desc: 'Dialogues & reading texts' },
+  { to: '/quiz', Icon: HelpCircle, label: 'Quiz', desc: 'Test your knowledge' },
 ];
 
 export default function Dashboard({ streakData, xpData, weeklyData, quizHistory, deckCards, onNavigate }) {
@@ -89,7 +90,7 @@ export default function Dashboard({ streakData, xpData, weeklyData, quizHistory,
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {/* Header */}
       <div style={{ paddingTop: '8px' }}>
-        <p style={{ color: '#9CA3AF', fontSize: '14px', fontWeight: 500, marginBottom: '4px' }}>Olá! 👋</p>
+        <p style={{ color: '#9CA3AF', fontSize: '14px', fontWeight: 500, marginBottom: '4px' }}>Olá!</p>
         <h1 style={{ color: '#1A1A2E', fontSize: '28px', fontWeight: 800, lineHeight: 1.2, marginBottom: '12px' }}>
           Aprenda Português
         </h1>
@@ -130,7 +131,9 @@ export default function Dashboard({ streakData, xpData, weeklyData, quizHistory,
           <div style={{ fontSize: '32px', fontWeight: 800, lineHeight: 1, color: '#1A1A2E' }}>
             {streakData?.currentStreak || 0}
           </div>
-          <div style={{ color: '#9CA3AF', fontSize: '12px', marginTop: '4px' }}>🔥 day streak</div>
+          <div style={{ color: '#9CA3AF', fontSize: '12px', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '3px', justifyContent: 'center' }}>
+            <Flame size={13} strokeWidth={2} style={{ color: '#D97706' }} /> day streak
+          </div>
         </div>
       </div>
 
@@ -199,7 +202,7 @@ export default function Dashboard({ streakData, xpData, weeklyData, quizHistory,
               onMouseOver={e => e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)'}
               onMouseOut={e => e.currentTarget.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)'}
             >
-              <span style={{ fontSize: '22px', display: 'block', marginBottom: '8px' }}>{tile.icon}</span>
+              <tile.Icon size={22} strokeWidth={1.8} style={{ display: 'block', marginBottom: '8px', color: '#7B61FF' }} />
               <div style={{ color: '#1A1A2E', fontWeight: 700, fontSize: '14px', marginBottom: '2px' }}>{tile.label}</div>
               <div style={{ color: '#9CA3AF', fontSize: '12px' }}>{tile.desc}</div>
             </button>

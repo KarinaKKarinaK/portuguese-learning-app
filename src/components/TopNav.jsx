@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { Flame, Sparkles } from 'lucide-react';
 
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Home' },
@@ -55,7 +56,9 @@ export default function TopNav({ xp, streak }) {
         ))}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <span style={{ color: '#D97706', fontSize: '14px', fontWeight: 600 }}>🔥 {streak}</span>
+        <span style={{ color: '#D97706', fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <Flame size={15} strokeWidth={2} /> {streak}
+        </span>
         <span
           style={{
             background: '#EDE9FF',
@@ -66,7 +69,7 @@ export default function TopNav({ xp, streak }) {
             borderRadius: '999px',
           }}
         >
-          ✨ {xp} XP
+          <Sparkles size={13} strokeWidth={2} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '3px' }} />{xp} XP
         </span>
       </div>
     </nav>

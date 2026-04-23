@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SLANG, CUTOFFS, PRONUNCIATION_RULES, ES_PT_DIFFERENCES, FALSE_FRIENDS, GRAMMAR_GAPS } from '../data/mineires';
 import SpeakButton from '../components/SpeakButton';
+import { AlertTriangle } from 'lucide-react';
 
 const SUB_TABS = [
   { id: 'slang', label: 'Slang & Cutoffs' },
@@ -80,7 +81,7 @@ function PronunciationSection() {
             <span style={{ color: '#1A1A2E', fontSize: '13px', fontFamily: 'monospace' }}>{rule.ipaApprox}</span>
           </div>
           <p style={{ color: '#9CA3AF', fontSize: '13px', fontStyle: 'italic', marginBottom: '12px' }}>
-            🇪🇸 {rule.spanishComparison}
+            ES: {rule.spanishComparison}
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {rule.examples.map(ex => (
@@ -128,11 +129,11 @@ function SpanishSection() {
             <div style={{ color: '#7B61FF', fontSize: '13px', fontWeight: 700, marginBottom: '8px' }}>{diff.topic}</div>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '4px' }}>
               <div>
-                <span style={{ color: '#9CA3AF', fontSize: '11px' }}>🇪🇸 ES: </span>
+                <span style={{ color: '#9CA3AF', fontSize: '11px' }}>ES: </span>
                 <span className="pt-word" style={{ color: '#6B7280', fontSize: '13px' }}>{diff.spanish}</span>
               </div>
               <div>
-                <span style={{ color: '#9CA3AF', fontSize: '11px' }}>🇧🇷 PT: </span>
+                <span style={{ color: '#9CA3AF', fontSize: '11px' }}>PT: </span>
                 <span className="pt-word" style={{ color: '#1A1A2E', fontSize: '13px', fontWeight: 600 }}>{diff.portuguese}</span>
               </div>
             </div>
@@ -161,7 +162,9 @@ function SpanishSection() {
               <span style={{ color: '#9CA3AF' }}>🇧🇷 PT: </span>
               <span style={{ color: '#1A1A2E', fontWeight: 600 }}>{ff.ptMeaning}</span>
             </div>
-            <p style={{ color: '#DC2626', fontSize: '12px', fontStyle: 'italic' }}>⚠️ {ff.warning}</p>
+            <p style={{ color: '#DC2626', fontSize: '12px', fontStyle: 'italic', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <AlertTriangle size={13} strokeWidth={2} />{ff.warning}
+            </p>
           </div>
         ))}
       </div>
@@ -185,11 +188,11 @@ function SpanishSection() {
               >
                 <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '4px' }}>
                   <div>
-                    <span style={{ color: '#9CA3AF', fontSize: '11px' }}>🇪🇸 </span>
+                    <span style={{ color: '#9CA3AF', fontSize: '11px' }}>ES </span>
                     <span className="pt-word" style={{ color: '#6B7280', fontSize: '13px' }}>{ex.es}</span>
                   </div>
                   <div>
-                    <span style={{ color: '#9CA3AF', fontSize: '11px' }}>🇧🇷 </span>
+                    <span style={{ color: '#9CA3AF', fontSize: '11px' }}>PT </span>
                     <span className="pt-word" style={{ color: '#1A1A2E', fontSize: '13px', fontWeight: 600 }}>{ex.pt}</span>
                   </div>
                 </div>

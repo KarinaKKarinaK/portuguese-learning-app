@@ -3,6 +3,7 @@ import { QUIZ_POOL } from '../data/quizPool';
 import { useQuizHistory } from '../hooks/useQuizHistory';
 import { useFlashcards } from '../hooks/useFlashcards';
 import { useXP } from '../hooks/useXP';
+import { Timer, Check, X, Lightbulb, Trophy, ThumbsUp, Zap } from 'lucide-react';
 
 const TOTAL_QUESTIONS = 17;
 
@@ -80,7 +81,7 @@ function QuestionDisplay({ question, onAnswer, timeElapsed }) {
             fontWeight: 600,
           }}
         >
-          ⏱ {timerStr}
+          <Timer size={13} strokeWidth={2} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '3px' }} />{timerStr}
         </span>
       </div>
 
@@ -174,8 +175,8 @@ function Feedback({ isCorrect, question, onNext }) {
           padding: '20px',
         }}
       >
-        <div style={{ color: isCorrect ? '#16A34A' : '#DC2626', fontWeight: 800, fontSize: '18px', marginBottom: '10px' }}>
-          {isCorrect ? '✓ Correct!' : '✗ Incorrect'}
+        <div style={{ color: isCorrect ? '#16A34A' : '#DC2626', fontWeight: 800, fontSize: '18px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {isCorrect ? <><Check size={20} strokeWidth={2.5} /> Correct!</> : <><X size={20} strokeWidth={2.5} /> Incorrect</>}
         </div>
         {!isCorrect && (
           <div style={{ marginBottom: '10px' }}>
@@ -193,7 +194,7 @@ function Feedback({ isCorrect, question, onNext }) {
         </p>
         {question.mnemonic && (
           <p style={{ color: '#D97706', fontSize: '13px', fontStyle: 'italic', background: '#FFFBEB', padding: '8px 12px', borderRadius: '8px' }}>
-            💡 {question.mnemonic}
+            <Lightbulb size={14} strokeWidth={2} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />{question.mnemonic}
           </p>
         )}
       </div>
@@ -371,8 +372,13 @@ export default function Quiz() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div style={{ textAlign: 'center', padding: '16px 0' }}>
-          <div style={{ fontSize: '60px', marginBottom: '12px' }}>
-            {pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '💪'}
+          <div style={{ marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>
+            {pct >= 80
+              ? <Trophy size={60} strokeWidth={1.5} style={{ color: '#D97706' }} />
+              : pct >= 60
+              ? <ThumbsUp size={60} strokeWidth={1.5} style={{ color: '#7B61FF' }} />
+              : <Zap size={60} strokeWidth={1.5} style={{ color: '#22C55E' }} />
+            }
           </div>
           <h2 style={{ color: '#1A1A2E', fontWeight: 800, fontSize: '28px', marginBottom: '4px' }}>{score}/{questions.length}</h2>
           <p style={{ color: '#9CA3AF', fontSize: '15px' }}>{pct}% correct</p>
@@ -388,7 +394,7 @@ export default function Quiz() {
                 <div key={q.id} className="card" style={{ padding: '14px 16px' }}>
                   <p style={{ color: '#1A1A2E', fontSize: '13px', marginBottom: '6px' }}>{q.question}</p>
                   <p style={{ color: '#16A34A', fontSize: '12px', marginBottom: '10px', fontWeight: 600 }}>
-                    ✓ {q.type === 'true_false' ? (q.correct === 'true' ? 'True' : 'False') : q.options?.[q.correct]}
+                    <Check size={13} strokeWidth={2.5} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '3px' }} />{q.type === 'true_false' ? (q.correct === 'true' ? 'True' : 'False') : q.options?.[q.correct]}
                   </p>
                   <button
                     onClick={() => addCard(q.question, q.options?.[q.correct] || q.correct.toString(), q.explanation)}

@@ -1,3 +1,5 @@
+import { Flame } from 'lucide-react';
+
 export default function StreakBar({ streak }) {
   return (
     <div
@@ -11,7 +13,7 @@ export default function StreakBar({ streak }) {
         padding: '6px 14px',
       }}
     >
-      <span style={{ fontSize: '18px' }}>🔥</span>
+      <Flame size={18} strokeWidth={2} style={{ color: '#D97706' }} />
       <span style={{ color: '#D97706', fontWeight: 700, fontSize: '15px' }}>{streak} days</span>
     </div>
   );

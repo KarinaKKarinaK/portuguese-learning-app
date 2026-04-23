@@ -1,14 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import { Home, BookOpen, Mic, CreditCard, HelpCircle } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { to: '/dashboard', icon: '🏠', label: 'Home' },
-  { to: '/grammar', icon: '📖', label: 'Grammar' },
-  { to: '/vocabulary', icon: '📝', label: 'Vocab' },
-  { to: '/mineires', icon: '🗣️', label: 'MG' },
-  { to: '/flashcards', icon: '🃏', label: 'Cards' },
-  { to: '/content', icon: '💬', label: 'Content' },
-  { to: '/quiz', icon: '❓', label: 'Quiz' },
-  { to: '/youtube', icon: '▶️', label: 'YT' },
+  { to: '/dashboard', Icon: Home, label: 'Home' },
+  { to: '/grammar', Icon: BookOpen, label: 'Grammar' },
+  { to: '/flashcards', Icon: CreditCard, label: 'Cards' },
+  { to: '/quiz', Icon: HelpCircle, label: 'Quiz' },
+  { to: '/mineires', Icon: Mic, label: 'Mineirês' },
 ];
 
 export default function BottomNav() {
@@ -57,7 +55,15 @@ export default function BottomNav() {
                   padding: '4px 2px',
                 }}
               >
-                <span style={{ fontSize: '16px', lineHeight: 1 }}>{item.icon}</span>
+                <item.Icon
+                  size={18}
+                  strokeWidth={isActive ? 2.5 : 1.8}
+                  style={{
+                    color: isActive ? '#ffffff' : '#6B7280',
+                    filter: isActive ? 'drop-shadow(0 0 6px #7B61FF)' : 'none',
+                    transition: 'color 0.15s, filter 0.15s',
+                  }}
+                />
                 <span
                   style={{
                     fontSize: '9px',

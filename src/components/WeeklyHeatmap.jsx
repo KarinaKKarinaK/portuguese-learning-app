@@ -1,3 +1,5 @@
+import { Star } from 'lucide-react';
+
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function getDotStyle(xp, isToday) {
@@ -67,7 +69,7 @@ export default function WeeklyHeatmap({ weeklyData }) {
                     fontWeight: 700,
                     color: day.xp > 100 ? 'white' : '#1A1A2E',
                   }}>
-                    {day.xp > 99 ? '★' : ''}
+                    {day.xp > 99 ? <Star size={14} strokeWidth={0} fill={day.xp > 100 ? 'white' : '#1A1A2E'} /> : null}
                   </div>
                 )}
               </div>
